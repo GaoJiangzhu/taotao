@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://manage.taotao.com/js/jquery-easyui-1.4.1/jquery.min.js"></script>
+    <!--src可以跨域,并且只能解析js代码-->
+
+</head>
+<body>
+
+    <script>
+
+        /*alert($);*///$ 是  function jquery
+
+        $(function(){
+
+            $.ajax({
+                url : 'http://manage.taotao.com/json.jsp',
+                type : 'get',
+                dataType : 'jsonp',
+                success : function(data){
+                    console.log(data);
+
+                }
+            });
+        });
+    </script>
+<!--通过scrip标签获取数据-->
+    <!--<script>
+        function fun (data){
+            console.log(data);
+        }
+    </script>
+    <script src="http://manage.taotao.com/json.jsp？callback=fun"></script>-->
+</body>
+</html>

@@ -1,0 +1,53 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/rabbit
+	http://www.springframework.org/schema/rabbit/spring-rabbit-1.4.xsd
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+    <!--定义连接工厂
+    <rabbit:connection-factory id="connectionFactory"
+                               host="${rabbit.host}" port="${rabbit.port}" username="${rabbit.username}"
+                               password="${rabbit.password}"
+                               virtual-host="${rabbit.virtual-host}" />
+
+
+    &lt;!&ndash;定义交换机&ndash;&gt;
+    <rabbit:topic-exchange name="TAOTAO_MANAGE_ITEM_EXCHANGE" auto-declare="true" durable="false"/>
+
+    &lt;!&ndash;定义队列&ndash;&gt;
+    <rabbit:queue durable="false" auto-declare="true" name="TAOTAO_SEARCH_ITEM_QUEUE"/>
+
+    &lt;!&ndash;监听者/消费者&ndash;&gt;
+    <bean id="itemMQHandler" class="com.taotao.search.rabbit.ItemMQHandler"/>
+    &lt;!&ndash;定义监听&ndash;&gt;
+    <rabbit:listener-container auto-declare="true" connection-factory="connectionFactory">
+        <rabbit:listener ref="itemMQHandler" method="execute" queue-names="TAOTAO_SEARCH_ITEM_QUEUE"/>
+    </rabbit:listener-container>
+    &lt;!&ndash;定义管理&ndash;&gt;
+    <rabbit:admin connection-factory="connectionFactory"/>-->
+
+
+
+
+    <!--定义连接工厂-->
+    <rabbit:connection-factory id="connectionFactory"
+                               host="${rabbit.host}" port="${rabbit.port}" username="${rabbit.username}" password="${rabbit.password}"
+                               virtual-host="${rabbit.virtual-host}" />
+
+
+    <!--定义交换机-->
+    <rabbit:topic-exchange name="TAOTAO_MANAGE_ITEM_EXCHANGE" auto-declare="true" durable="false"/>
+
+    <!--定义队列-->
+    <rabbit:queue durable="false" auto-declare="true" name="TAOTAO_SEARCH_ITEM_QUEUE" />
+
+    <!--监听者/消费者-->
+    <bean id="itemMQHandler" class="com.taotao.search.rabbit.ItemMQHandler"/>
+    <!--定义监听-->
+    <rabbit:listener-container auto-declare="true" connection-factory="connectionFactory">
+        <rabbit:listener ref="itemMQHandler" method="execute" queue-names="TAOTAO_SEARCH_ITEM_QUEUE" />
+    </rabbit:listener-container>
+    <!--定义管理-->
+    <rabbit:admin connection-factory="connectionFactory" />
+</beans>

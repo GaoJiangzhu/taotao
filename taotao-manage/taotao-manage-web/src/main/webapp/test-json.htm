@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--引入jquery-->
+    <script src="/js/jquery-easyui-1.4.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <script>
+
+        alert($);//$ 是  function jquery
+
+        $(function(){
+
+            $.ajax({
+                url : '/json.jsp',
+                type : 'get',
+                dataType : 'json',
+                success : function(data){
+                    console.log(data);
+
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
